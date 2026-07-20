@@ -40,3 +40,23 @@ def calcular_gasto_calorico_diario(tmb, nivel_atividade):
         opcoes = ", ".join(FATORES_ATIVIDADE)
         raise ValueError(f"Nível de atividade deve ser um de: {opcoes}")
     return round(tmb * FATORES_ATIVIDADE[nivel_atividade], 2)
+
+
+RECOMENDACAO_MEDICA = (
+    "Este valor está fora da faixa considerada saudável. "
+    "Recomendamos procurar um médico e realizar exames antes de "
+    "iniciar ou continuar um programa de treino."
+)
+
+
+def verificar_alerta_saude(imc):
+    """Retorna uma recomendação de avaliação médica para IMC em faixa
+    grave (magreza severa ou obesidade grave). Retorna None quando o
+    IMC não indica risco imediato.
+
+    Isto não é um diagnóstico médico, apenas um alerta para buscar
+    avaliação profissional.
+    """
+    if imc < 16 or imc >= 40:
+        return RECOMENDACAO_MEDICA
+    return None
