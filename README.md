@@ -16,6 +16,7 @@ Ferramentas simples em Python para acompanhamento de saúde e treino.
 - Cálculo de frequência cardíaca máxima e zonas de intensidade de treino
 - Estimativa de hidratação diária recomendada
 - Estimativa de percentual de gordura corporal (fórmula da Marinha dos EUA)
+- Interface de linha de comando (CLI) reunindo todas as funcionalidades acima
 
 ## Como usar
 
@@ -116,6 +117,15 @@ gordura_f = calcular_percentual_gordura(
     sexo="F", altura_cm=165, pescoco_cm=32, cintura_cm=70, quadril_cm=95
 )
 print(gordura_f)  # 24.86 (%)
+```
+
+## Usando pela linha de comando
+
+Sem precisar escrever nenhum código, é possível usar todas as
+funcionalidades por um menu interativo:
+
+```bash
+python -m fitnes
 ```
 
 ## Rodando os testes
