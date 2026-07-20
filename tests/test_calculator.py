@@ -5,6 +5,7 @@ from fitnes.calculator import (
     calcular_imc,
     calcular_tmb,
     classificar_imc,
+    verificar_alerta_saude,
 )
 
 
@@ -63,3 +64,19 @@ def test_calcular_gasto_calorico_diario():
 def test_calcular_gasto_calorico_diario_nivel_invalido():
     with pytest.raises(ValueError):
         calcular_gasto_calorico_diario(1648.75, "voador")
+
+
+def test_verificar_alerta_saude_magreza_grave():
+    assert verificar_alerta_saude(15) is not None
+
+
+def test_verificar_alerta_saude_obesidade_grave():
+    assert verificar_alerta_saude(41) is not None
+
+
+def test_verificar_alerta_saude_peso_normal():
+    assert verificar_alerta_saude(22) is None
+
+
+def test_verificar_alerta_saude_limite_obesidade_grave():
+    assert verificar_alerta_saude(40) is not None
