@@ -14,6 +14,7 @@ Ferramentas simples em Python para acompanhamento de saúde e treino.
 - Classificação de pressão arterial (hipotensão, normal, elevada, hipertensão estágio 1/2, crise hipertensiva)
 - Triagem PAR-Q para identificar outros fatores de risco antes de iniciar atividade física
 - Cálculo de frequência cardíaca máxima e zonas de intensidade de treino
+- Estimativa de hidratação diária recomendada
 
 ## Como usar
 
@@ -87,6 +88,15 @@ print(fc_maxima)  # 190
 
 zonas = calcular_zonas_treino(fc_maxima)
 print(zonas["Zona 3 - Moderada (70-80%)"])  # (133, 152)
+```
+
+### Hidratação diária recomendada
+
+```python
+from fitnes.hidratacao import calcular_hidratacao_diaria
+
+hidratacao_ml = calcular_hidratacao_diaria(peso_kg=70, nivel_atividade="moderado")
+print(hidratacao_ml)  # 3000 (ml)
 ```
 
 ## Rodando os testes
