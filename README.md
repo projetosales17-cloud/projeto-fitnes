@@ -9,6 +9,8 @@ Ferramentas simples em Python para acompanhamento de saúde e treino.
 - Cálculo de Taxa Metabólica Basal (TMB) pela fórmula de Mifflin-St Jeor
 - Cálculo de gasto calórico diário a partir da TMB e do nível de atividade
 - Alerta recomendando avaliação médica quando o IMC indica magreza grave ou obesidade grave
+- Classificação de pressão arterial (hipotensão, normal, elevada, hipertensão estágio 1/2, crise hipertensiva)
+- Triagem PAR-Q para identificar outros fatores de risco antes de iniciar atividade física
 
 ## Como usar
 
@@ -43,6 +45,34 @@ Níveis de atividade aceitos: `sedentario`, `leve`, `moderado`, `intenso`, `muit
 > alerta para faixas de IMC associadas a maior risco (IMC < 16 ou IMC ≥ 40),
 > recomendando buscar avaliação profissional antes de iniciar ou continuar
 > um programa de treino.
+
+### Triagem de risco pré-atividade física
+
+```python
+from fitnes.triagem import (
+    classificar_pressao_arterial,
+    verificar_alerta_pressao_arterial,
+    avaliar_liberacao_atividade_fisica,
+)
+
+categoria = classificar_pressao_arterial(sistolica=150, diastolica=95)
+print(categoria)  # "Hipertensão estágio 2"
+print(verificar_alerta_pressao_arterial(categoria))  # recomenda avaliação médica
+
+resultado = avaliar_liberacao_atividade_fisica({
+    "problema_cardiaco": False,
+    "dor_peito_atividade": True,
+})
+print(resultado["liberado"])      # False
+print(resultado["alertas"])       # lista das perguntas do PAR-Q respondidas "sim"
+print(resultado["recomendacao"])  # recomenda avaliação médica
+```
+
+> **Aviso:** `fitnes/triagem.py` não faz diagnóstico médico. Aplica a
+> classificação de pressão arterial da American Heart Association e o
+> questionário padrão PAR-Q (Physical Activity Readiness Questionnaire)
+> apenas para sinalizar quando uma avaliação médica é recomendada antes
+> de iniciar ou retomar atividade física.
 
 ## Rodando os testes
 
