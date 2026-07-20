@@ -15,6 +15,7 @@ Ferramentas simples em Python para acompanhamento de saúde e treino.
 - Triagem PAR-Q para identificar outros fatores de risco antes de iniciar atividade física
 - Cálculo de frequência cardíaca máxima e zonas de intensidade de treino
 - Estimativa de hidratação diária recomendada
+- Estimativa de percentual de gordura corporal (fórmula da Marinha dos EUA)
 
 ## Como usar
 
@@ -97,6 +98,24 @@ from fitnes.hidratacao import calcular_hidratacao_diaria
 
 hidratacao_ml = calcular_hidratacao_diaria(peso_kg=70, nivel_atividade="moderado")
 print(hidratacao_ml)  # 3000 (ml)
+```
+
+### Percentual de gordura corporal
+
+```python
+from fitnes.composicao_corporal import calcular_percentual_gordura
+
+# Homens: sexo, altura, pescoço e cintura (cm)
+gordura_m = calcular_percentual_gordura(
+    sexo="M", altura_cm=180, pescoco_cm=38, cintura_cm=85
+)
+print(gordura_m)  # 16.11 (%)
+
+# Mulheres: além do acima, também é necessário informar o quadril (cm)
+gordura_f = calcular_percentual_gordura(
+    sexo="F", altura_cm=165, pescoco_cm=32, cintura_cm=70, quadril_cm=95
+)
+print(gordura_f)  # 24.86 (%)
 ```
 
 ## Rodando os testes
