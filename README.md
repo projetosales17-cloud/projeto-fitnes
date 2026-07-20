@@ -1,5 +1,7 @@
 # Projeto Fitnes
 
+[![Tests](https://github.com/projetosales17-cloud/projeto-fitnes/actions/workflows/tests.yml/badge.svg)](https://github.com/projetosales17-cloud/projeto-fitnes/actions/workflows/tests.yml)
+
 Ferramentas simples em Python para acompanhamento de saúde e treino.
 
 ## Funcionalidades
