@@ -13,6 +13,7 @@ Ferramentas simples em Python para acompanhamento de saúde e treino.
 - Alerta recomendando avaliação médica quando o IMC indica magreza grave ou obesidade grave
 - Classificação de pressão arterial (hipotensão, normal, elevada, hipertensão estágio 1/2, crise hipertensiva)
 - Triagem PAR-Q para identificar outros fatores de risco antes de iniciar atividade física
+- Cálculo de frequência cardíaca máxima e zonas de intensidade de treino
 
 ## Como usar
 
@@ -75,6 +76,18 @@ print(resultado["recomendacao"])  # recomenda avaliação médica
 > questionário padrão PAR-Q (Physical Activity Readiness Questionnaire)
 > apenas para sinalizar quando uma avaliação médica é recomendada antes
 > de iniciar ou retomar atividade física.
+
+### Frequência cardíaca e zonas de treino
+
+```python
+from fitnes.frequencia_cardiaca import calcular_fc_maxima, calcular_zonas_treino
+
+fc_maxima = calcular_fc_maxima(idade=30)
+print(fc_maxima)  # 190
+
+zonas = calcular_zonas_treino(fc_maxima)
+print(zonas["Zona 3 - Moderada (70-80%)"])  # (133, 152)
+```
 
 ## Rodando os testes
 
