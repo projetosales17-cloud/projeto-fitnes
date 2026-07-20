@@ -1,8 +1,20 @@
+import pytest
+
 from fitnes.calculator import calcular_imc, classificar_imc
 
 
 def test_calcular_imc():
     assert calcular_imc(70, 1.75) == 22.86
+
+
+def test_calcular_imc_peso_invalido():
+    with pytest.raises(ValueError):
+        calcular_imc(0, 1.75)
+
+
+def test_calcular_imc_altura_invalida():
+    with pytest.raises(ValueError):
+        calcular_imc(70, -1.75)
 
 
 def test_classificar_imc_abaixo_do_peso():
